@@ -40,9 +40,7 @@ const Header = () => {
               <NavLink to="/blog">Blog</NavLink>
             </Nav>
             <Nav className="navLinks">
-              <NavLink to="/lear-react">
-                Start Learnning React {user ? "with " + user.displayName : ""}
-              </NavLink>
+              <Link>Welcome Mr. {user ? user.displayName : ""}</Link>
               <NavLink>
                 <button className="btn btn-dark" onClick={themeChange}>
                   Toggle Dark/Light Mode
@@ -54,6 +52,9 @@ const Header = () => {
                   <NavLink to="/profile">
                     <Image
                       rounded
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title={user?.displayName}
                       roundedCircle
                       style={{ height: "40px" }}
                       src={user?.photoURL}

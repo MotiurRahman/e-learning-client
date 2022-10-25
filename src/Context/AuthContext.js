@@ -59,9 +59,11 @@ const AuthContext = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null || currentUser.emailVerified) {
-        setUser(currentUser);
-      }
+      // if (currentUser === null || currentUser.emailVerified) {
+      //   setUser(currentUser);
+      // }
+
+      setUser(currentUser);
 
       setLoader(false);
     });
@@ -71,6 +73,7 @@ const AuthContext = ({ children }) => {
   const authValue = {
     user,
     loader,
+    setUser,
     signInwithGoogle,
     signInwithGithub,
     logout,

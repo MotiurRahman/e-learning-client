@@ -9,26 +9,18 @@ import Profile from "../Components/Profile/Profile";
 import Registration from "../Components/Registration/Registration";
 import Terms from "../Components/Terms/Terms";
 import Main from "../Layout/Main";
+import SubMain from "../Layout/SubMain";
 import Courses from "../Pages/Courses/Courses";
 import LearnReact from "../Pages/Lear-react/LearnReact";
 
 const router = [
   {
     path: "/",
-    element: <Main></Main>,
+    element: <SubMain></SubMain>,
     children: [
       { path: "/", element: <Home></Home> },
-      { path: "/courses", element: <Courses></Courses> },
       { path: "/faq", element: <FAQ></FAQ> },
       { path: "/blog", element: <Blog></Blog> },
-      {
-        path: "/lear-react",
-        element: (
-          <PrivateRoute>
-            <LearnReact></LearnReact>
-          </PrivateRoute>
-        ),
-      },
       { path: "/login", element: <Login></Login> },
       { path: "/registration", element: <Registration></Registration> },
       { path: "/terms", element: <Terms></Terms> },
@@ -41,6 +33,28 @@ const router = [
         ),
       },
       { path: "*", element: <PageNotFound></PageNotFound> },
+    ],
+  },
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/courses",
+        element: (
+          <PrivateRoute>
+            <Courses></Courses>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/learn-react",
+        element: (
+          <PrivateRoute>
+            <LearnReact></LearnReact>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ];

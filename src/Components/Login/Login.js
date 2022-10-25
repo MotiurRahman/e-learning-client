@@ -7,7 +7,8 @@ import { AuthUserContext } from "../../Context/AuthContext";
 import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Login = () => {
-  const { loginUser, setLoader } = useContext(AuthUserContext);
+  const { loginUser, setLoader, signInwithGoogle, signInwithGithub } =
+    useContext(AuthUserContext);
   const [msg, setMessage] = useState();
   const navigate = useNavigate();
 
@@ -21,11 +22,12 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
-        if (!result.user.emailVerified) {
-          toast("Please verify your email first");
-        } else {
-          navigate(from, { replace: true });
-        }
+        // if (!result.user.emailVerified) {
+        //   toast("Please verify your email first");
+        // } else {
+        //   navigate(from, { replace: true });
+        // }
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -37,9 +39,33 @@ const Login = () => {
       });
     console.log(email, password);
   };
+
+  // Handle Google Login
+  const handleGoogleLogin = () => {
+    signInwithGoogle()
+      .then((result) => {
+        console.log("Google Login", result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
+  };
+
+  // Handle Github Login
+  const handleGidhubLogin = () => {
+    signInwithGithub()
+      .then((result) => {
+        console.log("Github Login", result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
+  };
   return (
-    <div className="mt-5 w-75">
-      <h3>Login.</h3>
+    <div className="mt-5 w-75 w-lg-50 mx-auto">
+      <h3>Login</h3>
       <Form onSubmit={accountLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -58,7 +84,7 @@ const Login = () => {
           <Button
             variant="dark"
             size="lg"
-            className="mx-auto w-50"
+            className="mx-auto w-75 w-lg-50"
             type="submit"
           >
             Login
@@ -74,10 +100,16 @@ const Login = () => {
       <p className="text-center">Or</p>
       <hr />
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <button className="mb-3 btn btn-outline-dark w-75">
+        <button
+          className="mb-3 btn btn-outline-dark w-75"
+          onClick={handleGoogleLogin}
+        >
           <BsGoogle></BsGoogle> Continue with Google
         </button>
-        <button className="btn btn-outline-dark w-75">
+        <button
+          className="btn btn-outline-dark w-75"
+          onClick={handleGidhubLogin}
+        >
           <BsGithub></BsGithub> Continue with Github
         </button>
       </div>
