@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthUserContext } from "../../Context/AuthContext";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Login = () => {
   const { loginUser, setLoader } = useContext(AuthUserContext);
@@ -37,8 +38,8 @@ const Login = () => {
     console.log(email, password);
   };
   return (
-    <div className="mt-5">
-      <h2>Please login to your account.</h2>
+    <div className="mt-5 w-75">
+      <h3>Login.</h3>
       <Form onSubmit={accountLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -53,12 +54,33 @@ const Login = () => {
             placeholder="Password"
           />
         </Form.Group>
+        <div className="d-grid gap-2">
+          <Button
+            variant="dark"
+            size="lg"
+            className="mx-auto w-50"
+            type="submit"
+          >
+            Login
+          </Button>
+          <p className="text-center">
+            Don't have an account?{" "}
+            <Link to="/registration">Create an account</Link>
+          </p>
+        </div>
 
-        <Button variant="primary" className="mx-auto" type="submit">
-          Submit
-        </Button>
-        <p className="text-danger">{msg}</p>
+        <p className="text-danger text-center mt-3">{msg}</p>
       </Form>
+      <p className="text-center">Or</p>
+      <hr />
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <button className="mb-3 btn btn-outline-dark w-75">
+          <BsGoogle></BsGoogle> Continue with Google
+        </button>
+        <button className="btn btn-outline-dark w-75">
+          <BsGithub></BsGithub> Continue with Github
+        </button>
+      </div>
     </div>
   );
 };

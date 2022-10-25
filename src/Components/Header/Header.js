@@ -41,7 +41,7 @@ const Header = () => {
             </Nav>
             <Nav className="navLinks">
               <NavLink to="/lear-react">
-                Start Learnning React with Motiur
+                Start Learnning React {user ? "with " + user.displayName : ""}
               </NavLink>
               <NavLink>
                 <button className="btn btn-dark" onClick={themeChange}>
@@ -55,6 +55,7 @@ const Header = () => {
                     <Image
                       rounded
                       roundedCircle
+                      style={{ height: "40px" }}
                       src={user?.photoURL}
                       alt="Profile Image"
                     ></Image>

@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthUserContext } from "../../Context/AuthContext";
+import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Registration = () => {
   const { createUser, updateUserProfile, emailVerification } =
@@ -62,7 +63,7 @@ const Registration = () => {
   };
   return (
     <div className="mt-5">
-      <h4>Please complete your registration process</h4>
+      <h3>Create an Accout</h3>
       <Form onSubmit={accountRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Display Name</Form.Label>
@@ -104,16 +105,32 @@ const Registration = () => {
             }
           />
         </Form.Group>
-        <Button
-          variant="primary"
-          className="mx-auto"
-          type="submit"
-          disabled={!accepted}
-        >
-          Submit
-        </Button>
-        <p className="text-danger">{msg}</p>
+
+        <div className="d-grid gap-2">
+          <Button
+            variant="dark"
+            size="lg"
+            className="mx-auto w-50"
+            type="submit"
+            disabled={!accepted}
+          >
+            Create an account
+          </Button>
+          <p className="text-center">
+            Already have an account?
+            <Link to="/login">Login</Link>
+          </p>
+        </div>
+        <p className="text-center text-danger">{msg}</p>
       </Form>
+      <div className="d-flex flex-column justify-content-center align-items-center">
+        <button className="mb-3 btn btn-outline-dark w-50">
+          <BsGoogle></BsGoogle> Continue with Google
+        </button>
+        <button className="btn btn-outline-dark w-50">
+          <BsGithub></BsGithub> Continue with Github
+        </button>
+      </div>
     </div>
   );
 };
