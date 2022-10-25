@@ -37,7 +37,6 @@ const Login = () => {
       .finally(() => {
         setLoader(false);
       });
-    console.log(email, password);
   };
 
   // Handle Google Login
@@ -64,7 +63,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="mt-5 w-75 w-lg-50 mx-auto">
+    <div className="mt-5 contentWidth mx-auto borderColor">
       <h3>Login</h3>
       <Form onSubmit={accountLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -84,7 +83,7 @@ const Login = () => {
           <Button
             variant="dark"
             size="lg"
-            className="mx-auto w-75 w-lg-50"
+            className="mx-auto contentWidth"
             type="submit"
           >
             Login
@@ -101,13 +100,13 @@ const Login = () => {
       <hr />
       <div className="d-flex flex-column justify-content-center align-items-center">
         <button
-          className="mb-3 btn btn-outline-dark w-75"
+          className="mb-3 btn btn-outline-dark contentWidth"
           onClick={handleGoogleLogin}
         >
           <BsGoogle></BsGoogle> Continue with Google
         </button>
         <button
-          className="btn btn-outline-dark w-75"
+          className="btn btn-outline-dark contentWidth"
           onClick={handleGidhubLogin}
         >
           <BsGithub></BsGithub> Continue with Github

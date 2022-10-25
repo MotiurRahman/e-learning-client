@@ -7,13 +7,24 @@ import "./Header.css";
 import { useContext } from "react";
 import { AuthUserContext } from "../../Context/AuthContext";
 import { Image } from "react-bootstrap";
+import { useState } from "react";
 
 const Header = () => {
-  const themeChange = () => {};
+  const [bgColor, setBgColor] = useState("dark");
+  const [toggle, setToggle] = useState(true);
+  const themeChange = () => {
+    if (toggle) {
+      setToggle(false);
+      setBgColor("light");
+    } else {
+      setToggle(true);
+      setBgColor("dark");
+    }
+  };
   const { user, logout } = useContext(AuthUserContext);
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg={bgColor} variant="dark">
         <Container>
           <Navbar.Brand>
             <Link className="text-decoration-none" to="/">
@@ -40,7 +51,7 @@ const Header = () => {
               <NavLink to="/blog">Blog</NavLink>
             </Nav>
             <Nav className="navLinks">
-              <Link>Welcome Mr. {user ? user.displayName : ""}</Link>
+              <Link>{user ? "Welcome Mr." + user.displayName : ""}</Link>
               <NavLink>
                 <button className="btn btn-dark" onClick={themeChange}>
                   Toggle Dark/Light Mode

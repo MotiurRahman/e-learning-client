@@ -28,7 +28,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="mt-5 w-75 w-lg-50 mx-auto">
+    <div className="mt-5 contentWidth mx-auto borderColor">
       <h3>Update your profile</h3>
       <Form onSubmit={updateProfile}>
         <Form.Group className="mb-3" controlId="formBasicEmail">

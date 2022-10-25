@@ -93,10 +93,10 @@ const Registration = () => {
       });
   };
   return (
-    <div className="mt-5 w-75 w-lg-50 mx-auto">
+    <div className="mt-5 contentWidth mx-auto borderColor">
       <h3>Create an Accout</h3>
       <Form onSubmit={accountRegister}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Full name</Form.Label>
           <Form.Control
             type="text"
@@ -105,7 +105,7 @@ const Registration = () => {
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicPhotoURL">
           <Form.Label>Photo URL</Form.Label>
           <Form.Control
             type="text"
@@ -149,7 +149,7 @@ const Registration = () => {
           <Button
             variant="dark"
             size="lg"
-            className="mx-auto w-75 w-lg-50"
+            className="mx-auto contentWidth"
             type="submit"
             disabled={!accepted}
           >
@@ -157,20 +157,20 @@ const Registration = () => {
           </Button>
           <p className="text-center">
             Already have an account?
-            <Link to="/login">Login</Link>
+            <Link to="/login"> Login</Link>
           </p>
         </div>
         <p className="text-center text-danger">{msg}</p>
       </Form>
       <div className="d-flex flex-column justify-content-center align-items-center">
         <button
-          className="mb-3 btn btn-outline-dark w-50"
+          className="mb-3 btn btn-outline-dark contentWidth"
           onClick={handleGoogleLogin}
         >
           <BsGoogle></BsGoogle> Continue with Google
         </button>
         <button
-          className="btn btn-outline-dark w-50"
+          className="btn btn-outline-dark contentWidth"
           onClick={handleGidhubLogin}
         >
           <BsGithub></BsGithub> Continue with Github
