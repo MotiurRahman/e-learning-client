@@ -4,9 +4,13 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
+import { useContext } from "react";
+import { AuthUserContext } from "../../Context/AuthContext";
+import { Image } from "react-bootstrap";
 
 const Header = () => {
   const themeChange = () => {};
+  const { user, logout } = useContext(AuthUserContext);
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -44,8 +48,24 @@ const Header = () => {
                   Toggle Dark/Light Mode
                 </button>
               </NavLink>
-              <NavLink to="/login">Login</NavLink>
-              <NavLink to="/registration">Registration</NavLink>
+              {user ? (
+                <>
+                  <NavLink onClick={logout}>Logout</NavLink>
+                  <NavLink to="/profile">
+                    <Image
+                      rounded
+                      roundedCircle
+                      src={user?.photoURL}
+                      alt="Profile Image"
+                    ></Image>
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <NavLink to="/login">Login</NavLink>
+                  <NavLink to="/registration">Registration</NavLink>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
