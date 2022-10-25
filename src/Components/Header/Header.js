@@ -36,9 +36,11 @@ const Header = () => {
               <NavLink to="/blog">Blog</NavLink>
             </Nav>
             <Nav className="navLinks">
-              <NavLink to="/lear-react">Learn React with Motiur</NavLink>
+              <NavLink to="/lear-react">
+                Start Learnning React with Motiur
+              </NavLink>
               <NavLink>
-                <button className="btn btn-dark" onclick={themeChange}>
+                <button className="btn btn-dark" onClick={themeChange}>
                   Toggle Dark/Light Mode
                 </button>
               </NavLink>
