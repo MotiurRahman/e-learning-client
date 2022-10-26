@@ -2,6 +2,7 @@ import React from "react";
 import Blog from "../Components/Blog/Blog";
 import FAQ from "../Components/FAQ/FAQ";
 import Home from "../Components/Home/Home/Home";
+import LeftSidebar from "../Components/LeftSideBar/LeftSidebar";
 import Login from "../Components/Login/Login";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
@@ -25,6 +26,17 @@ const router = [
       { path: "/registration", element: <Registration></Registration> },
       { path: "/terms", element: <Terms></Terms> },
       {
+        path: "/courses",
+        loader: async () => {
+          return fetch("http://localhost:8000/courses");
+        },
+        element: (
+          <PrivateRoute>
+            <Courses></Courses>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/profile",
         element: (
           <PrivateRoute>
@@ -40,15 +52,10 @@ const router = [
     element: <Main></Main>,
     children: [
       {
-        path: "/courses",
-        element: (
-          <PrivateRoute>
-            <Courses></Courses>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/learn-react",
+        path: "course/:cat_id",
+        loader: async ({ params }) => {
+          return fetch(`http://localhost:8000/course/${params.cat_id}`);
+        },
         element: (
           <PrivateRoute>
             <LearnReact></LearnReact>

@@ -50,6 +50,13 @@ const Registration = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (password !== confirm) {
+      setMessage("You password did not match");
+      toast("You password did not match");
+      return;
+    }
 
     createUser(email, password)
       .then((result) => {
@@ -131,6 +138,15 @@ const Registration = () => {
             name="password"
             placeholder="Password"
             required
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicConfirm">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            name="confirm"
+            placeholder="Confirm Password"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
