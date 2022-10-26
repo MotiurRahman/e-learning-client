@@ -2,6 +2,7 @@ import React from "react";
 import Blog from "../Components/Blog/Blog";
 import FAQ from "../Components/FAQ/FAQ";
 import Home from "../Components/Home/Home/Home";
+import LeftSidebar from "../Components/LeftSideBar/LeftSidebar";
 import Login from "../Components/Login/Login";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
