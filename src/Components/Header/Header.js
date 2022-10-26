@@ -35,7 +35,7 @@ const Header = () => {
                 height="30"
                 className="d-inline-block align-top"
               />
-              <span className="text-light ms-2">E-React</span>
+              <span className="ms-2">E-Learning</span>
             </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -7,7 +7,7 @@ const Home = () => {
     <div className="mt-5 text-center">
       <h2 style={{ fontSize: "5vw" }}>Kickstart your career</h2>
       <p style={{ fontSize: "3vw" }}>
-        Get certified by completing a React Development Course
+        Get certified by completing a Development Course
       </p>
       <Button className="btn btn-dark" style={{ fontSize: "5vw" }}>
         <Link className="text-decoration-none text-light" to="/courses">
