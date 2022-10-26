@@ -14,7 +14,7 @@ const Header = () => {
   const [toggle, setToggle] = useState(true);
   const themeChange = () => {
     if (toggle) {
-      setToggle(false);  
+      setToggle(false);
       setBgColor("light");
     } else {
       setToggle(true);

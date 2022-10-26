@@ -2,7 +2,6 @@ import React from "react";
 import Blog from "../Components/Blog/Blog";
 import FAQ from "../Components/FAQ/FAQ";
 import Home from "../Components/Home/Home/Home";
-import LeftSidebar from "../Components/LeftSideBar/LeftSidebar";
 import Login from "../Components/Login/Login";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import PrivateRoute from "../Components/PrivateRoute/PrivateRoute";
@@ -11,13 +10,15 @@ import Registration from "../Components/Registration/Registration";
 import Terms from "../Components/Terms/Terms";
 import Main from "../Layout/Main";
 import SubMain from "../Layout/SubMain";
+import Checkout from "../Pages/Checkout/Checkout";
+import Contents from "../Pages/Contents/Contents";
+import SpecificContent from "../Pages/Contents/SpecificContent";
 import Courses from "../Pages/Courses/Courses";
-import LearnReact from "../Pages/Lear-react/LearnReact";
 
 const router = [
   {
     path: "/",
-    element: <SubMain></SubMain>,
+    element: <Main></Main>,
     children: [
       { path: "/", element: <Home></Home> },
       { path: "/faq", element: <FAQ></FAQ> },
@@ -28,7 +29,9 @@ const router = [
       {
         path: "/courses",
         loader: async () => {
-          return fetch("http://localhost:8000/courses");
+          return fetch(
+            "https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/courses"
+          );
         },
         element: (
           <PrivateRoute>
@@ -36,6 +39,7 @@ const router = [
           </PrivateRoute>
         ),
       },
+
       {
         path: "/profile",
         element: (
@@ -49,16 +53,44 @@ const router = [
   },
   {
     path: "/",
-    element: <Main></Main>,
+    element: <SubMain></SubMain>,
     children: [
       {
         path: "course/:cat_id",
         loader: async ({ params }) => {
-          return fetch(`http://localhost:8000/course/${params.cat_id}`);
+          return fetch(
+            `https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/course/${params.cat_id}`
+          );
         },
         element: (
           <PrivateRoute>
-            <LearnReact></LearnReact>
+            <Contents></Contents>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "course/:cat_id/:id",
+        loader: async ({ params }) => {
+          return fetch(
+            `https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/course/${params.cat_id}/${params.id}`
+          );
+        },
+        element: (
+          <PrivateRoute>
+            <SpecificContent></SpecificContent>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "checkout/:id",
+        loader: async ({ params }) => {
+          return fetch(
+            `https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/course/react/${params.id}`
+          );
+        },
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
           </PrivateRoute>
         ),
       },

@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 
 const Courses = () => {
   const courseList = useLoaderData();
+  //console.log(courseList);
   return (
     <div className="mt-5 mx-auto">
       <Container>
