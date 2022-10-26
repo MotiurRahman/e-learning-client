@@ -32,7 +32,28 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.borderColor {
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 576px) {
+  .contentWidth {
+    width: 75%;
+  }
+
+}
+
+@media (min-width: 577px) {
+  .contentWidth {
+    width: 50%;
+  }
+
 }

@@ -2,16 +2,23 @@ import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthUserContext } from "../../Context/AuthContext";
 import { BsGoogle, BsGithub } from "react-icons/bs";
 
 const Registration = () => {
-  const { createUser, updateUserProfile, emailVerification } =
-    useContext(AuthUserContext);
+  const {
+    createUser,
+    updateUserProfile,
+    emailVerification,
+    signInwithGoogle,
+    signInwithGithub,
+  } = useContext(AuthUserContext);
   const [msg, setMessage] = useState();
   const [accepted, setAccepted] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleUpdatUserProfile = (displayName, photoURL) => {
     const profile = {
@@ -68,29 +75,60 @@ const Registration = () => {
     console.log(e.target.checked);
     setAccepted(e.target.checked);
   };
+
+  // Handle Google Login
+  const handleGoogleLogin = () => {
+    signInwithGoogle()
+      .then((result) => {
+        console.log("Google Login", result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
+  };
+
+  // Handle Github Login
+  const handleGidhubLogin = () => {
+    signInwithGithub()
+      .then((result) => {
+        console.log("Github Login", result.user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        toast(error.message);
+      });
+  };
   return (
-    <div className="mt-5">
+    <div className="mt-5 contentWidth mx-auto borderColor">
       <h3>Create an Accout</h3>
       <Form onSubmit={accountRegister}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Display Name</Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Full name</Form.Label>
           <Form.Control
             type="text"
             name="displayName"
-            placeholder="Enter Name"
+            placeholder="Enter Full Name"
+            required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>photo URL</Form.Label>
+        <Form.Group className="mb-3" controlId="formBasicPhotoURL">
+          <Form.Label>Photo URL</Form.Label>
           <Form.Control
             type="text"
             name="photoURL"
             placeholder="Enter photoURL"
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" />
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -99,6 +137,7 @@ const Registration = () => {
             type="password"
             name="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
 
@@ -126,7 +165,7 @@ const Registration = () => {
           <Button
             variant="dark"
             size="lg"
-            className="mx-auto w-50"
+            className="mx-auto contentWidth"
             type="submit"
             disabled={!accepted}
           >
@@ -134,16 +173,22 @@ const Registration = () => {
           </Button>
           <p className="text-center">
             Already have an account?
-            <Link to="/login">Login</Link>
+            <Link to="/login"> Login</Link>
           </p>
         </div>
         <p className="text-center text-danger">{msg}</p>
       </Form>
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <button className="mb-3 btn btn-outline-dark w-50">
+        <button
+          className="mb-3 btn btn-outline-dark contentWidth"
+          onClick={handleGoogleLogin}
+        >
           <BsGoogle></BsGoogle> Continue with Google
         </button>
-        <button className="btn btn-outline-dark w-50">
+        <button
+          className="btn btn-outline-dark contentWidth"
+          onClick={handleGidhubLogin}
+        >
           <BsGithub></BsGithub> Continue with Github
         </button>
       </div>

@@ -22,13 +22,14 @@ const Profile = () => {
     updateUserProfile(profile)
       .then(() => {
         toast("Profile updated successfully");
+        window.location.reload();
       })
       .catch(() => {});
   };
 
   return (
-    <div className="mt-5">
-      <h1>You can update your profile</h1>
+    <div className="mt-5 contentWidth mx-auto borderColor">
+      <h3>Update your profile</h3>
       <Form onSubmit={updateProfile}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Display Name</Form.Label>
@@ -41,7 +42,7 @@ const Profile = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>photo URL</Form.Label>
+          <Form.Label>Photo URL</Form.Label>
           <Form.Control
             type="text"
             name="photoURL"
@@ -60,9 +61,17 @@ const Profile = () => {
             placeholder="Enter email"
           />
         </Form.Group>
-        <Button variant="primary" className="mx-auto" type="submit">
-          Update Profile
-        </Button>
+
+        <div className="d-grid gap-2">
+          <Button
+            variant="dark"
+            size="lg"
+            className="mx-auto w-75"
+            type="submit"
+          >
+            Update Profile
+          </Button>
+        </div>
       </Form>
     </div>
   );
