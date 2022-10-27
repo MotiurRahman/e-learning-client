@@ -19,6 +19,7 @@ export const AuthUserContext = createContext();
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
+  const [themeColor, setThemeColor] = useState("dark");
   const googleProvider = new GoogleAuthProvider();
 
   const githubProvider = new GithubAuthProvider();
@@ -82,6 +83,8 @@ const AuthContext = ({ children }) => {
     loginUser,
     setLoader,
     emailVerification,
+    themeColor,
+    setThemeColor,
   };
   return (
     <div>

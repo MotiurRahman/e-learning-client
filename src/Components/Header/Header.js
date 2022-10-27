@@ -7,25 +7,24 @@ import "./Header.css";
 import { useContext } from "react";
 import { AuthUserContext } from "../../Context/AuthContext";
 import { Col, Image } from "react-bootstrap";
-import { useState } from "react";
 import LeftSidebar from "../../Pages/LeftSideBar/LeftSidebar";
 
 const Header = () => {
-  const [bgColor, setBgColor] = useState("dark");
-  const [toggle, setToggle] = useState(true);
-  const themeChange = () => {
-    if (toggle) {
-      setToggle(false);
-      setBgColor("light");
+  const { user, logout, themeColor, setThemeColor } =
+    useContext(AuthUserContext);
+
+  // Handle Toggle Button for theme
+  const handleThemeChange = (e) => {
+    if (e.target.value == "dark") {
+      setThemeColor("dark");
     } else {
-      setToggle(true);
-      setBgColor("dark");
+      setThemeColor("light");
     }
   };
-  const { user, logout } = useContext(AuthUserContext);
+
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg={bgColor} variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg={themeColor} variant="dark">
         <Container>
           <Navbar.Brand>
             <Link className="text-decoration-none" to="/">
@@ -53,11 +52,42 @@ const Header = () => {
             </Nav>
             <Nav className="navLinks">
               <Link>{user ? "Welcome Mr." + user.displayName : ""}</Link>
-              <NavLink>
-                <button className="btn btn-dark" onClick={themeChange}>
-                  Toggle Dark/Light Mode
-                </button>
-              </NavLink>
+              <div
+                className="btn-group"
+                role="group"
+                onChange={handleThemeChange}
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnDark"
+                  value="dark"
+                  autocomplete="off"
+                />
+                <label
+                  className="btn btn-outline-primary m-auto"
+                  htmlFor="btnDark"
+                >
+                  Drak Mode
+                </label>
+
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnLight"
+                  value="light"
+                  autocomplete="off"
+                />
+                <label
+                  className="btn btn-outline-primary m-auto"
+                  htmlFor="btnLight"
+                >
+                  Light Mode
+                </label>
+              </div>
               {user ? (
                 <>
                   <NavLink onClick={logout}>Logout</NavLink>

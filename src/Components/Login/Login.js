@@ -14,6 +14,8 @@ const Login = () => {
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  // Login using user name and password
   const accountLogin = (e) => {
     e.preventDefault();
     const form = e.target;
