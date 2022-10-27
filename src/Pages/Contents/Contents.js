@@ -4,12 +4,10 @@ import ContentBody from "../ContentBody/ContentBody";
 
 const Contents = () => {
   const courseDetails = useLoaderData();
-
   return (
     <div>
       {courseDetails.length == 0 ? (
         <p className="mt-5">
-          {" "}
           <Link to="/course/react">
             {" "}
             Sorry, Only React content is available{" "}
