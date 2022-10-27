@@ -46,14 +46,18 @@
 
 @media (max-width: 576px) {
   .contentWidth {
-    width: 75%;
+    width: 90%;
   }
-
 }
 
-@media (min-width: 577px) {
+@media (min-width: 577px) and (max-width: 991px) {
+  .contentWidth {
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
   .contentWidth {
     width: 50%;
   }
-
 }

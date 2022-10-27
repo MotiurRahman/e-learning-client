@@ -12,12 +12,12 @@ const SpecificContent = () => {
 
   return (
     <div>
-      <div className="mt-5">
+      <div className="mt-3 mt-md-5">
         <h5 className="py-3">
           Title: {title}
           <button
             onClick={generatePDF}
-            className="btn btn-outline-secondary ms-3"
+            className="btn btn-outline-secondary ms-2 ms-md-3 mt-md-0 mt-2"
           >
             Download
           </button>

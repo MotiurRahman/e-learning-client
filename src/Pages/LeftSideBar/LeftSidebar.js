@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaHandPointRight } from "react-icons/fa";
 
 const LeftSidebar = () => {
   const [courseTitle, setcourseTitle] = useState([]);
@@ -15,11 +16,17 @@ const LeftSidebar = () => {
   }, []);
 
   return (
-    <div className="mt-5">
-      <h4>All the Contents</h4>
+    <div className="mt-3 mt-md-5">
+      <h4 className="text-primary">All the Contents</h4>
       {courseTitle.map((title) => (
         <p key={title.id}>
-          <Link to={`/course/react/${title.id}`}> {title.title}</Link>
+          <FaHandPointRight></FaHandPointRight>
+          <Link
+            className="text-decoration-none"
+            to={`/course/react/${title.id}`}
+          >
+            {title.title}
+          </Link>
         </p>
       ))}
     </div>

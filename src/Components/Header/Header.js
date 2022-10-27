@@ -6,8 +6,9 @@ import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { useContext } from "react";
 import { AuthUserContext } from "../../Context/AuthContext";
-import { Image } from "react-bootstrap";
+import { Col, Image } from "react-bootstrap";
 import { useState } from "react";
+import LeftSidebar from "../../Pages/LeftSideBar/LeftSidebar";
 
 const Header = () => {
   const [bgColor, setBgColor] = useState("dark");
@@ -80,6 +81,9 @@ const Header = () => {
                 </>
               )}
             </Nav>
+            <Col lg={4} className="d-block d-lg-none">
+              <LeftSidebar></LeftSidebar>
+            </Col>
           </Navbar.Collapse>
         </Container>
       </Navbar>

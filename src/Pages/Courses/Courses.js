@@ -11,7 +11,7 @@ const Courses = () => {
   return (
     <div className="mt-5 mx-auto">
       <Container>
-        <Row md={4}>
+        <Row md={4} sm={2}>
           {courseList.map((course) => (
             <Col>
               <Course key={course.id} course={course}></Course>
