@@ -12,7 +12,7 @@ const SpecificContent = () => {
 
   return (
     <div>
-      <div className="mt-3 mt-md-5">
+      <div className="my-3 mt-md-5 ">
         <h5 className="py-3">
           Title: {title}
           <button

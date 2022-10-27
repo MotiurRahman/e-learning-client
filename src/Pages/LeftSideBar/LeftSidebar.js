@@ -16,7 +16,7 @@ const LeftSidebar = () => {
   }, []);
 
   return (
-    <div className="mt-3 mt-md-5">
+    <div className="mt-3 mt-md-5 border border-dark m-5 p-3 rounded">
       <h4 className="text-primary">All the Contents</h4>
       {courseTitle.map((title) => (
         <p key={title.id}>

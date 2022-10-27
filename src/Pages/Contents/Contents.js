@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ContentBody from "../ContentBody/ContentBody";
 
 const Contents = () => {
@@ -8,7 +8,13 @@ const Contents = () => {
   return (
     <div>
       {courseDetails.length == 0 ? (
-        <p className="mt-5">Sorry, Only React content is available</p>
+        <p className="mt-5">
+          {" "}
+          <Link to="/course/react">
+            {" "}
+            Sorry, Only React content is available{" "}
+          </Link>
+        </p>
       ) : (
         courseDetails.map((courseDetail) => (
           <ContentBody
