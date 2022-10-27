@@ -53,7 +53,7 @@ const Header = () => {
             <Nav className="navLinks">
               <Link>{user ? "Welcome Mr." + user.displayName : ""}</Link>
               <div
-                className="btn-group"
+                className="btn-group my-2 px-3"
                 role="group"
                 onChange={handleThemeChange}
                 aria-label="Basic radio toggle button group"
@@ -90,7 +90,9 @@ const Header = () => {
               </div>
               {user ? (
                 <>
-                  <NavLink onClick={logout}>Logout</NavLink>
+                  <NavLink className="my-2 mx-3" onClick={logout}>
+                    Logout
+                  </NavLink>
                   <NavLink to="/profile">
                     <Image
                       rounded
