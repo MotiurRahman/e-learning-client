@@ -33,11 +33,7 @@ const router = [
             "https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/courses"
           );
         },
-        element: (
-          <PrivateRoute>
-            <Courses></Courses>
-          </PrivateRoute>
-        ),
+        element: <Courses></Courses>,
       },
 
       {
@@ -62,11 +58,7 @@ const router = [
             `https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/course/${params.cat_id}`
           );
         },
-        element: (
-          <PrivateRoute>
-            <Contents></Contents>
-          </PrivateRoute>
-        ),
+        element: <Contents></Contents>,
       },
       {
         path: "course/:cat_id/:id",
@@ -75,11 +67,7 @@ const router = [
             `https://b610-lerning-platform-server-side-motiur-rahman-motiurrahman.vercel.app/course/${params.cat_id}/${params.id}`
           );
         },
-        element: (
-          <PrivateRoute>
-            <SpecificContent></SpecificContent>
-          </PrivateRoute>
-        ),
+        element: <SpecificContent></SpecificContent>,
       },
       {
         path: "checkout/:id",
