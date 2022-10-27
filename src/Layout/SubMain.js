@@ -1,12 +1,13 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
+import Footer from "../Components/Footer/Footer";
 import Header from "../Components/Header/Header";
 import LeftSidebar from "../Pages/LeftSideBar/LeftSidebar";
 
 const SubMain = () => {
   return (
-    <div>
+    <div className="d-flex flex-column min-vh-100">
       <Header></Header>
       <div>
         <Container>
@@ -20,6 +21,7 @@ const SubMain = () => {
           </Row>
         </Container>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

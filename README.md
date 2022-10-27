@@ -10,8 +10,7 @@
 - On courses tab you will get all the developmnet courses.
 - You can choose any one then start learning one after another.
 - Also, you can download any course.
-
-* There have a blog page for getting more knowledge.
+- There have a blog page for getting more knowledge.
 
 # The following technologies I have used to develop this platform
 

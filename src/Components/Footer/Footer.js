@@ -2,8 +2,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <h4>this is footer</h4>
+    <div
+      className="footer bg-dark w-100 mt-auto d-flex justify-content-center align-items-center"
+      style={{ height: "50px, bottom:0" }}
+    >
+      <h4 className="p-3 text-light">
+        © 2022 Motiur Rahman All rights reserved.
+      </h4>
     </div>
   );
 };

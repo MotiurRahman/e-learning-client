@@ -7,7 +7,13 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (loader) {
-    return <div>Loading ......</div>;
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="spinner-border mt-5" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
   if (!user) {
     // Redirect them to the /login page, but save the current location they were
