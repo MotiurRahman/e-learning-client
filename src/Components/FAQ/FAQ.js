@@ -1,7 +1,9 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import useTitle from "../../hooks/useTitle";
 
 const FAQ = () => {
+  useTitle("FAQ");
   return (
     <div className="container mt-2 mt-lg-5">
       <h4>REACT FAQ</h4>

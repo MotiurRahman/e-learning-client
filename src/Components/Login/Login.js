@@ -65,7 +65,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="mt-5 contentWidth mx-auto borderColor">
+    <div className="my-5 contentWidth mx-auto borderColor">
       <h3>Login</h3>
       <Form onSubmit={accountLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">

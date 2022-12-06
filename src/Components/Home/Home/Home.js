@@ -1,8 +1,10 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useTitle from "../../../hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div className="mt-5 text-center">
       <h2 style={{ fontSize: "5vw" }}>Kickstart your career</h2>
